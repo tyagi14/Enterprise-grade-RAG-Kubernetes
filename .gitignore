@@ -1,0 +1,44 @@
+# Secrets — never commit. Use .env.example / terraform.tfvars.example as templates.
+.env
+.env.*
+!.env.example
+*.tfvars
+!*.tfvars.example
+*.pem
+*.key
+service-account*.json
+
+# Terraform state and provider cache (state contains secret values)
+terraform/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+enterprise_env/
+venv/
+.venv/
+tenvv/
+
+# Local run state, caches, logs
+.eval_state/
+.deepeval/
+.logfire/
+ingest.log
+*.log
+
+# Backups and OS files
+*.bak
+.DS_Store
+.ipynb_checkpoints/
+
+# Large third-party documents used only to test ingestion of noisy data
+DATA/noisy_data/
+
+# Scratch notebook copies (one contains a hardcoded key)
+*_copy*.ipynb

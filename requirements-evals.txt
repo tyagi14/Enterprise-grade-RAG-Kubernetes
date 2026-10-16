@@ -1,0 +1,19 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+streamlit
+python-dotenv
+nest-asyncio
+requests
+pandas
+openai
+logfire
+python-pptx
+python-docx
+beautifulsoup4
+ragas
+langchain>=0.3,<0.4
+langchain-core>=0.3,<0.4
+langchain-community>=0.3,<0.4
+sentence-transformers
+huggingface-hub<2.0
+torch
+google-cloud-storage

@@ -1,0 +1,21 @@
+# Copy to terraform.tfvars (git-ignored) and fill in. Prefer TF_VAR_* environment variables
+# or Secret Manager for the sensitive values.
+project_id             = "your-gcp-project"
+region                 = "us-central1"
+app_name               = "enterprise-rag"
+qdrant_url             = ""
+qdrant_api_key         = ""
+groq_api_key           = ""
+groq_fallback_api_key  = ""
+db_password            = ""
+logfire_token          = ""
+langsmith_api_key      = ""
+langsmith_project      = ""
+doc_ai_processor_id    = ""
+portkey_api_key        = ""
+portkey_config_id      = ""
+nvidia_api_key         = ""
+# Judge keys must belong to different Groq organizations than groq_api_key / groq_fallback_api_key.
+judge_groq             = ""
+judge_groq_2           = ""
+judge_groq_3           = ""

@@ -1,0 +1,58 @@
+# Controls the Docker build context sent to the daemon.
+# Each Dockerfile only COPYs what it needs (app/, evals/, ui/) —
+# other directories are present in context but never land in the image.
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+.installed.cfg
+build/
+dist/
+wheels/
+
+# Virtual environments (huge — never needed in image)
+venv/
+.venv/
+env/
+genv/
+enterprise_env/
+tenvv/
+
+# Secrets
+.env
+
+# Terraform — IaC only, run locally; tfvars contains secrets
+terraform/
+
+# Git & IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Observability local state
+.logfire/
+
+# Claude Code memory
+.claude/
+
+# Data — lives in GCS, not in containers
+DATA/
+
+# Docs & planning — not needed at runtime
+notebooks/
+DOCS/
+UPDATES TO DO DOCS/
+README.md
+ARCHITECTURE.md
+commands.md
+commands_scalable.md
+
+# OS
+.DS_Store
+Thumbs.db
+*.log

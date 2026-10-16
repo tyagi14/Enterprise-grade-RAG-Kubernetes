@@ -1,0 +1,58 @@
+# Controls what gets uploaded to the Cloud Build source tarball.
+# Cloud Build needs: app/, evals/, ui/, docker/, requirements-*.txt, cloudbuild.yaml
+.gcloudignore
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Virtual environments (huge — never needed in builds)
+venv/
+.venv/
+env/
+genv/
+enterprise_env/
+tenvv/
+
+# Secrets
+.env
+
+# Git & IDE
+.git/
+.gitignore
+.dockerignore
+.vscode/
+.idea/
+
+# Observability local state
+.logfire/
+
+# Claude Code memory
+.claude/
+
+# Data — lives in GCS, not needed for builds
+DATA/
+
+# Terraform — IaC only, run locally; tfvars contains secrets
+terraform/
+
+# Docs & planning files — not needed for builds
+notebooks/
+DOCS/
+UPDATES TO DO DOCS/
+README.md
+ARCHITECTURE.md
+commands.md
+commands_scalable.md
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
