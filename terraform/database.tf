@@ -7,7 +7,7 @@ resource "google_sql_database_instance" "postgres" {
 
   settings {
     tier = "db-f1-micro" # Smallest tier to keep costs low during dev
-    
+
     ip_configuration {
       ipv4_enabled = true
       # No authorized_networks — Cloud Run connects via Unix socket (Cloud SQL Auth Proxy).

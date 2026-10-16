@@ -16,7 +16,7 @@ resource "google_project_service" "services" {
     "compute.googleapis.com",
     "documentai.googleapis.com"
   ])
-  service = each.key
+  service            = each.key
   disable_on_destroy = false
 }
 
@@ -34,14 +34,14 @@ resource "google_compute_network" "rag_vpc" {
 
 # 4. Redis Instance (Memorystore)
 resource "google_redis_instance" "cache" {
-  name           = "rag-cache"
-  tier           = "BASIC"
-  memory_size_gb = 1
-  location_id    = "${var.region}-a"
+  name               = "rag-cache"
+  tier               = "BASIC"
+  memory_size_gb     = 1
+  location_id        = "${var.region}-a"
   authorized_network = google_compute_network.rag_vpc.id
 
-  redis_version     = "REDIS_6_X"
-  display_name      = "RAG Semantic Cache"
+  redis_version = "REDIS_6_X"
+  display_name  = "RAG Semantic Cache"
 
   depends_on = [google_project_service.services]
 }
@@ -114,25 +114,25 @@ resource "time_sleep" "wait_for_eventarc_sa" {
 }
 
 resource "google_project_iam_member" "eventarc_service_agent" {
-  project = var.project_id
-  role    = "roles/eventarc.serviceAgent"
-  member  = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+  project    = var.project_id
+  role       = "roles/eventarc.serviceAgent"
+  member     = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
   depends_on = [time_sleep.wait_for_eventarc_sa]
 }
 
 # 8. Storage Buckets
 resource "google_storage_bucket" "raw_data" {
-  name     = "${var.project_id}-rag-raw"
-  location = var.region
+  name                        = "${var.project_id}-rag-raw"
+  location                    = var.region
   uniform_bucket_level_access = true
-  force_destroy = true
+  force_destroy               = true
 }
 
 resource "google_storage_bucket" "processed_data" {
-  name     = "${var.project_id}-rag-processed"
-  location = var.region
+  name                        = "${var.project_id}-rag-processed"
+  location                    = var.region
   uniform_bucket_level_access = true
-  force_destroy = true
+  force_destroy               = true
 }
 
 # 8. Artifact Registry for Docker Images

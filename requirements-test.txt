@@ -1,0 +1,18 @@
+# Dependencies needed to run `PYTHONPATH=. pytest tests` (used by CI). No GPU/torch required.
+pytest==9.1.1
+pandas==3.0.6
+python-dotenv==1.2.4
+requests==2.34.2
+httpx==0.28.1
+openai==1.109.1
+logfire==5.1.1
+ragas==0.4.3
+instructor==1.3.2
+portkey-ai==2.3.4
+google-cloud-storage==3.16.0
+nest-asyncio==1.6.0
+streamlit==1.64.0
+langchain>=0.3,<0.4
+langchain-core>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-openai>=0.3,<0.4

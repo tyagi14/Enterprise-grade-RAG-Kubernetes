@@ -1,5 +1,8 @@
 # Enterprise-Grade RAG: Kubernetes
 
+[![CI](https://github.com/tyagi14/Enterprise-grade-RAG-Kubernetes/actions/workflows/ci.yml/badge.svg)](https://github.com/tyagi14/Enterprise-grade-RAG-Kubernetes/actions/workflows/ci.yml)
+![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
+
 A documentation chatbot (Kubernetes, Redis, Databricks, Intel networking) built as four Cloud Run
 microservices: a guarded, grounded RAG backend, a chat UI, an event-driven ingestion service and an
 evaluation dashboard. Answers come only from the indexed documentation; questions outside that scope
@@ -195,8 +198,10 @@ graph TB
 │
 ├── DOCS/                         # 24 architectural and operational guides
 ├── cloudbuild.yaml               # Parallel build of all 4 Docker images
+├── .github/workflows/ci.yml      # CI: tests, terraform fmt/validate, secret scan
 ├── .env.example                  # configuration template (copy to .env)
 ├── requirements.txt              # Backend / local dev dependencies
+├── requirements-test.txt         # Lightweight deps for the test suite / CI
 ├── requirements-evals.txt        # Evals service dependencies
 ├── requirements-ingestion.txt    # Ingestion service dependencies
 └── requirements-ui.txt           # UI service dependencies (4 packages)
@@ -244,8 +249,8 @@ See [DOCS/07_ENVIRONMENT_VARIABLES.md](DOCS/07_ENVIRONMENT_VARIABLES.md) for wha
 ### Tests
 
 ```bash
-pip install pytest
-PYTHONPATH=. pytest tests -q
+pip install -r requirements-test.txt
+PYTHONPATH=. pytest tests -q   # no .env or network needed
 ```
 
 ```bash
